@@ -2,7 +2,7 @@
 
 class TopScorer  {
     constructor(){
-        this.apiUrl = "halland";
+        this.apiUrl = "halland ";
     }
     getTable = (req , res) => {
         try{
