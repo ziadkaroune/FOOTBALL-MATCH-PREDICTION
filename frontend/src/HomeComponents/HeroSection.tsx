@@ -1,12 +1,14 @@
  
-import './App.css'
-import {  Trophy} from 'lucide-react';
+ 
+import {Trophy} from 'lucide-react';
  
 
 const HeroSection = () => {
+
     const title : string = "Premier League 2024/25";
     const subtitle : string = " AI-Powered Predictions & Live Standings"
     const Accuracy_rate :number = 86; 
+    
   return (
          <div className="relative overflow-hidden bg-gradient-to-b from-zinc-900 to-black">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[length:24px_24px]"></div>
