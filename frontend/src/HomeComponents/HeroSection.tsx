@@ -5,7 +5,7 @@ import {Trophy} from 'lucide-react';
 
 const HeroSection = () => {
 
-    const title : string = "Premier League 2024/25";
+    const title : string = "IXO BEST PL MATCHES PREDICTOR";
     const subtitle : string = " AI-Powered Predictions & Live Standings"
     const Accuracy_rate :number = 86; 
     
