@@ -1,26 +1,39 @@
- 
+  import  axios  from "axios";
+import { useEffect, useState } from "react";
 
-import {ArrowUp, ArrowDown, Minus } from 'lucide-react';
+type tableType = {
+    position :number,
+    team : string ,
+    played : number ,
+    won : number ,
+    drawn : number ,
+    lost : number ,
+    goalDifference : number ,
+    points : number ,
+    form : string,
+
+}
 const LeagueTable = () => {
 
+ 
+    const [tableTeam , setTableTeam] = useState<tableType[]>([]);
+     const getTable = async() => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/table');
+        setTableTeam(response.data);
+        console.log(response.data);
+      } catch (error) {``
+        console.error(error);
+      }
+    }
+    
+    useEffect(()=>{
+    getTable();
+    },[])
 
-    const predictions = [
-    { pos: 1, team: 'Liverpool', played: 20, won: 14, drawn: 5, lost: 1, gd: 25, points: 47, form: [1, 1, 0, 1, 1] },
-    { pos: 2, team: 'Arsenal', played: 20, won: 13, drawn: 6, lost: 1, gd: 22, points: 45, form: [0, 1, 1, 0, 1] },
-    { pos: 3, team: 'Chelsea', played: 20, won: 12, drawn: 5, lost: 3, gd: 18, points: 41, form: [1, 1, -1, 1, 1]},
-    { pos: 4, team: 'Man City', played: 20, won: 11, drawn: 6, lost: 3, gd: 16, points: 39, form: [1, 0, 1, 1, -1]},
-    { pos: 5, team: 'Newcastle', played: 20, won: 11, drawn: 5, lost: 4, gd: 14, points: 38, form: [1, -1, 1, 0, 1] },
-    { pos: 6, team: 'Aston Villa', played: 20, won: 10, drawn: 6, lost: 4, gd: 10, points: 36, form: [0, 1, 0, 1, -1] },
-    { pos: 7, team: 'Man United', played: 20, won: 10, drawn: 5, lost: 5, gd: 8, points: 35, form: [-1, 1, 1, 0, 1] },
-    { pos: 8, team: 'Tottenham', played: 20, won: 9, drawn: 6, lost: 5, gd: 5, points: 33, form: [0, -1, 1, 1, 0] },
-  ];
+ 
 
-    const getFormIcon = (result : number) => {
-    if (result === 1) return <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center text-black text-xs font-bold">W</div>;
-    if (result === 0) return <div className="w-6 h-6 bg-zinc-600 rounded-full flex items-center justify-center text-white text-xs font-bold">D</div>;
-    return <div className="w-6 h-6 bg-zinc-800 rounded-full flex items-center justify-center text-gray-400 text-xs font-bold">L</div>;
-  };
-
+ 
  
 
   return (
@@ -42,30 +55,31 @@ const LeagueTable = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {predictions.map((team, idx) => (
+                  {tableTeam.map((team, idx) => (
                     <tr
-                      key={team.team}
+                      key={idx}
                       className={`border-b border-zinc-800 hover:bg-zinc-800/50 transition-colors ${
                         idx < 4 ? 'bg-zinc-800/30' : idx > 16 ? 'bg-zinc-800/30' : ''
                       }`}
                     >
-                      <td className="px-4 py-4 font-bold text-lg text-gray-300">{team.pos}</td>
+                      <td className="px-4 py-4 font-bold text-lg text-gray-300">{team.position}</td>
                       <td className="px-4 py-4 font-semibold text-white">{team.team}</td>
                       <td className="px-4 py-4 text-center hidden sm:table-cell text-gray-400">{team.played}</td>
                       <td className="px-4 py-4 text-center hidden md:table-cell text-gray-400">{team.won}</td>
                       <td className="px-4 py-4 text-center hidden md:table-cell text-gray-400">{team.drawn}</td>
                       <td className="px-4 py-4 text-center hidden md:table-cell text-gray-400">{team.lost}</td>
                       <td className="px-4 py-4 text-center hidden lg:table-cell">
-                        <span className={team.gd > 0 ? 'text-gray-300' : team.gd < 0 ? 'text-gray-500' : 'text-gray-400'}>
-                          {team.gd > 0 ? '+' : ''}{team.gd}
+                        <span className={team.goalDifference > 0 ? 'text-gray-300' : team.goalDifference < 0 ? 'text-gray-500' : 'text-gray-400'}>
+                          {team.goalDifference > 0 ? '+' : ''}{team.goalDifference}
                         </span>
                       </td>
                       <td className="px-4 py-4 text-center font-bold text-xl text-white">{team.points}</td>
                       <td className="px-4 py-4 hidden lg:table-cell">
                         <div className="flex gap-1 justify-center">
-                          {team.form.map((result, i) => (
+                            
+                          { /*team.form.map((result, i) => (
                             <div key={i}>{getFormIcon(result)}</div>
-                          ))}
+                          )) */}
                         </div>
                       </td>
                      
