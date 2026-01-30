@@ -183,7 +183,7 @@ const MatchPredictor = () => {
                 : 'bg-zinc-800 text-zinc-500 cursor-wait animate-pulse'
             }`}
           >
-            {isAnimating ? 'RUNNING POISSON MODEL...' : '⚡ PREDICT WITH AI'}
+            {isAnimating ? 'RUNNING POISSON MODEL...' : '⚡ PREDICT'}
           </button>
         </div>
       </div>
