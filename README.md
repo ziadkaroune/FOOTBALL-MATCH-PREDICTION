@@ -2,6 +2,12 @@
 
 A full full-stack app that predicts football match outcomes using a Poisson regression model and fetches Premier League data from the football-data.org API.
 
+
+```bash
+git clone https://github.com/ziadkaroune/FOOTBALL-MATCH-PREDICTION
+```
+
+
 Contents
 - `backend/` — .NET minimal API that provides league table, top scorers, and match prediction endpoints.
 - `frontend/` — React + Vite frontend that displays tables, top scorers and a match predictor UI.
@@ -9,6 +15,7 @@ Contents
 Quick start
 
 Prerequisites: .NET 9 SDK, Node.js 18+, and an API key from https://www.football-data.org/.
+
 
 Run backend
 
