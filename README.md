@@ -1,4 +1,4 @@
-# Football IA Prediction
+# MINIMAL Football PL Prediction using Poisson regression  (school project)
 
 A full full-stack app that predicts football match outcomes using a Poisson regression model and fetches Premier League data from the football-data.org API.
 
