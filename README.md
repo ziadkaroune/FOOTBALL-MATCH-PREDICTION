@@ -27,7 +27,7 @@ npm install
 npm run dev
 ```
 
-or
+or after you setup your api key 
 
 ```bash
 bash run.sh
