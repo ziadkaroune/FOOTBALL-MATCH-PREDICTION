@@ -8,7 +8,7 @@
 
 public class PredictionService
 {
-    // PL League Averages (The Baselines)
+    // PL League Averages goals
     private const double AvgHomeGoals = 1.52;
     private const double AvgAwayGoals = 1.25;
 
@@ -38,7 +38,7 @@ public class PredictionService
         double homeLambda = match.HomeAttack * match.AwayDefense * AvgHomeGoals;
         double awayLambda = match.AwayAttack * match.HomeDefense * AvgAwayGoals;
 
-        // Step 4: Poisson Matrix (0-5 goals)
+        //  Poisson Matrix (0-5 goals )
         double homeWin = 0, draw = 0, awayWin = 0;
         for (int h = 0; h <= 5; h++) {
             for (int a = 0; a <= 5; a++) {
